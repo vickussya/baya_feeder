@@ -39,7 +39,7 @@
 | 1 | Steel plate, 106 mm dia x 3.2 mm (about 222 g) | bowl base weight (laser-cut / ordered; mild steel, clear-coated or stainless) |
 | 3 | M4 countersunk screws x 16 mm | bowl, weight plate and base |
 | 3 | M4 heat-set inserts (M4 x 5.7) | bowl foot |
-| 20 | M3 heat-set inserts (M3 x 5.7) | housing, flanges, bracket |
+| 24 | M3 heat-set inserts (M3 x 5.7) | housing: top, bottom, cap, box, posts, bracket (4 each) |
 | 8 | M3 x 12 screws | hopper and chute flanges |
 | 4 | M3 x 12 screws | bearing cap |
 | 4 | M3 x 20 screws | motor mount posts |

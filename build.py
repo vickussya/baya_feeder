@@ -284,7 +284,7 @@ def camera_basis(az_deg, el_deg):
     return right, up, fwd
 
 
-def render_view(meshes, az, el, width, ss=2, bg=(246, 247, 249), margin=40):
+def render_view(meshes, az, el, width, ss=2, bg=(246, 247, 249), margin=40, return_proj=False):
     right, up, fwd = camera_basis(az, el)
     allv = np.vstack([m[0] for m in meshes])
     cen = (allv.min(0) + allv.max(0)) / 2
@@ -338,7 +338,15 @@ def render_view(meshes, az, el, width, ss=2, bg=(246, 247, 249), margin=40):
                 zs[upd] = zz[upd]
                 img[miny:maxy + 1, minx:maxx + 1][upd] = np.clip(col * shade[k], 0, 255)
     im = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8))
-    return im.resize((Wd // ss, H // ss), Image.LANCZOS)
+    im = im.resize((Wd // ss, H // ss), Image.LANCZOS)
+    if return_proj:
+        M = np.stack([right, up, fwd], axis=1)
+
+        def proj(p):
+            q = (np.asarray(p, dtype=float) - cen) @ M
+            return (((q[0] - xmin) * scale + margin * ss) / ss, (H - ((q[1] - ymin) * scale + margin * ss)) / ss)
+        return im, proj
+    return im
 
 
 def render_assembly(parts, path):
