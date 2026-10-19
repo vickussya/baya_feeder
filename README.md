@@ -7,6 +7,13 @@ Built with [CadQuery](https://github.com/CadQuery/cadquery); every dimension is 
 
 ![assembly](docs/assembly.png)
 
+## How it works
+
+Pellets sit in the hopper and slide down the sloped funnel into a wheel with 6 pockets. Twice a day (07:00 and 19:00) the ESP32 reads the
+clock, finds the wheel's home position with a magnet and a reed switch, and turns the stepper motor one pocket (60 deg) at a time. Each pocket
+holds about 6.8 g and tips its pellets out at the bottom into the chute, so a 20 g dose is 3 pockets. The pellets slide down the chute and drop into the
+bowl inside the pen. The motor and electronics stay outside the pen, and you refill the hopper through the lid on top.
+
 | File | What |
 |------|------|
 | [feeder.py](feeder.py) | parametric source (all parameters at the top, one builder per part) |
